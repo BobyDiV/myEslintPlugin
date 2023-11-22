@@ -1,3 +1,4 @@
+/* eslint-disable eslint-plugin/consistent-output */
 /**
  * @fileoverview Used to check the correctness of the paths to the public API
  * @author BobyDiV
@@ -25,7 +26,7 @@ const aliasOptions = [
   },
 ];
 
-ruleTester.run("public-api-imports", rule, {
+ruleTester.run('public-api-imports', rule, {
   valid: [
     {
       code: "import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice'",
@@ -37,48 +38,74 @@ ruleTester.run("public-api-imports", rule, {
       options: aliasOptions,
     },
     {
-      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\file.test.ts',
+      filename:
+        'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\file.test.ts',
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
       errors: [],
-      options: [{
-        alias: '@',
-        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
-      }],
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.test.ts',
+            '**/*.test.ts',
+            '**/StoreDecorator.tsx',
+          ],
+        },
+      ],
     },
     {
-      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\StoreDecorator.tsx',
+      filename:
+        'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\StoreDecorator.tsx',
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
       errors: [],
-      options: [{
-        alias: '@',
-        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
-      }],
-    }
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.test.ts',
+            '**/*.test.ts',
+            '**/StoreDecorator.tsx',
+          ],
+        },
+      ],
+    },
   ],
 
   invalid: [
     {
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/model/file.ts'",
-      errors: [{ message: "Абсолютный импорт разрешен только из Public API (index.ts)"}],
+      errors: [{ messageId: 'PUBLIC_ERROR' }],
       options: aliasOptions,
+      output:
+        "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'",
     },
     {
-      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\StoreDecorator.tsx',
+      filename:
+        'C:\\Users\\Alina_Schneider\\Desktop\\javascript\\production_project\\src\\entities\\StoreDecorator.tsx',
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing/file.tsx'",
-      errors: [{message: 'Абсолютный импорт разрешен только из Public API (index.ts)'}],
-      options: [{
-        alias: '@',
-        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
-      }],
+      errors: [{ messageId: 'PUBLIC_ERROR' }],
+      output:
+        "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'",
+      options: [
+        {
+          alias: '@',
+          testFilesPatterns: [
+            '**/*.testing.ts',
+            '**/*.test.ts',
+            '**/*.stories.ts',
+            '**/StoreDecorator.tsx',
+          ],
+        },
+      ],
     },
     {
-      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\forbidden.ts',
+      filename: 'C:\\Users\\Alina_Schneider\\Desktop\\javascript\\production_project\\src\\entities\\forbidden.ts',
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/testing'",
-      errors: [{message: 'Тестовые данные необходимо импортировать из publicApi/testing.ts!'}],
+      errors: [{messageId: 'TESTING_PUBLIC_ERROR'}],
       options: [{
-        alias: '@',
-        testFilesPatterns: ['**/*.test.ts', '**/*.test.ts', '**/StoreDecorator.tsx']
+      alias: '@',
+      testFilesPatterns: ['**/*.testing.ts', '**/*.test.ts', '**/*.stories.ts', '**/StoreDecorator.tsx']
       }],
-    }
+      }
   ],
 });

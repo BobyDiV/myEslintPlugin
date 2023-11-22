@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-bobydiv-eslint-plugin",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "plugin for checking eslint rules",
   "keywords": [
     "eslint",
