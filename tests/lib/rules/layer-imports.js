@@ -34,6 +34,13 @@ ruleTester.run('layer-imports', rule, {
     },
     {
       filename:
+        'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\shared\\Article',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/shared/Button.tsx'",
+      errors: [],
+      options: aliasOptions,
+    },
+    {
+      filename:
         'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\features\\Article',
       code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article'",
       errors: [],
@@ -42,7 +49,7 @@ ruleTester.run('layer-imports', rule, {
     {
       filename:
         'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\app\\providers',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Articl'",
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Article'",
       errors: [],
       options: aliasOptions,
     },
@@ -85,7 +92,7 @@ ruleTester.run('layer-imports', rule, {
     {
       filename:
         'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\providers',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/features/Articl'",
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/features/Article'",
       errors: [
         {
           message:
@@ -97,7 +104,7 @@ ruleTester.run('layer-imports', rule, {
     {
       filename:
         'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\features\\providers',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Articl'",
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Article'",
       errors: [
         {
           message:
@@ -109,7 +116,7 @@ ruleTester.run('layer-imports', rule, {
     {
       filename:
         'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\providers',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Articl'",
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Article'",
       errors: [
         {
           message:
